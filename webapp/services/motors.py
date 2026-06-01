@@ -1,5 +1,6 @@
 from gpiozero import Motor
-class Motors():
+
+class Motors:
 
     def __init__(self):
         self.motor = Motor(17,18)
