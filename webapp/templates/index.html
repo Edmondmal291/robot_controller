@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="/static/style.css"/>
+</head>
+<script>
+    async function move(message) {
+        try{
+            if (message == 'forward')
+            {
+                direction = message
+                console.log("move forward")
+
+            }
+            else if( message == 'backward')
+            {
+                direction = message
+                console.log("move backward")
+            }
+
+            let url = "http://127.0.0.1:5000/"
+
+            complete_url_path = url + direction;
+            console.log("This is the complete url path "+  complete_url_path);
+
+            const response = await fetch(complete_url_path);
+            //console.log(response.json());
+            if (!response.ok)
+            {
+                throw new Error('HTTP error! Status: ${response.status}');
+            }
+             
+        }catch (error)
+        {
+            console.error('Request failed:',error)
+        }
+    }
+
+</script>
+<body>
+    <h1> My website</h1>
+
+    <button onclick="move('Forward')">Forward</button>
+    
+    <button onclick="move('Backward')">backward</button>
+</body>
+</html>
