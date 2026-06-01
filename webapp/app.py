@@ -2,6 +2,7 @@ from flask import Flask, render_template
 from services.motors import Motors
 
 app = Flask(__name__)
+motors = Motors(23,24)
 
 @app.route('/')
 def index():
@@ -17,13 +18,11 @@ def hello(name):
 
 @app.route('/forward')
 def forward():
-    motors = Motors()
     motors.move_forward()
     return {"status":"Success","message":"Data recieved, moving forward"}
 
 @app.route('/backward')
 def backward():
-    motors = Motors()
     motors.move_backward()
     return {"status":"Success","message":"Data recieved, moving backward"}
 
